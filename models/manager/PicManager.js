@@ -5,8 +5,8 @@
 var PicDO = require('../dataobject/PicDO');
 var PicDAO = require('../dao/PicDAO');
 
-exports.loadAllPictures = function (callback) {
-    PicDAO.queryAllPictures(function (err, rs) {
+exports.loadAllPictures = function (start, size, callback) {
+    PicDAO.queryAllPictures(start, size, function (err, rs) {
         if (rs != undefined && rs != null && rs.length > 0) {
             var result = new Array();
             for (var i = 0; i < rs.length; i++) {
