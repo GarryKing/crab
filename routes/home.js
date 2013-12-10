@@ -7,7 +7,7 @@ var PicManager = require('../models/manager/PicManager');
 exports.loadPictures = function (req, res) {
     var start = req.query.start;
     var size = req.query.size;
-    //TODO 校验两个入参
+    //TODO 鏍￠獙涓や釜鍏ュ弬
     PicManager.loadAllPictures(start, size, function (rs) {
         var result = "";
         if (rs != undefined && rs != null && rs.length > 0)
