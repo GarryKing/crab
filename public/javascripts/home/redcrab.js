@@ -2,7 +2,7 @@ $(function () {
     initGlobalParameter();
     initBaseContent();
     createCacheNewIframe();
-    loadImages(1, 40);
+    loadImages(1, 20);
     $(window).resize(function () {
         reSortImages();
     })
