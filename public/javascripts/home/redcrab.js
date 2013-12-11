@@ -51,8 +51,8 @@ function loadImages() {
 
     function createImageDiv(data) {
         //window.sc = "<img src=" + data.sourceUrl + "?" + Math.random() + ">";
-        //window.sc = "<img src=" + data.sourceUrl + ">";
-        window.sc = "<img src='../../img/home/logo-bt1.PNG' xSrc=" + data.sourceUrl + ">";
+        window.sc = "<img src=" + data.sourceUrl + ">";
+        //window.sc = "<img src='../../img/home/logo-bt1.PNG' xSrc=" + data.sourceUrl + ">";
         var content = "<div><li><div class='image_wrapper image_" + data.picId + "' style='display:;'></div></li></div>";
         var frame = document.getElementById("image_cache_iframe");
         var frameBody = $(frame).contents().find("body");
