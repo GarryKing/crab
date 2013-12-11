@@ -1,7 +1,8 @@
 $(function () {
     initGlobalParameter();
     initBaseContent();
-    loadImages();
+    createCacheNewIframe();
+    loadImages(1, 40);
     $(window).resize(function () {
         reSortImages();
     })
@@ -29,12 +30,15 @@ function initBaseContent() {
         .css("margin", "0px " + imageDivMargin).css("padding", 0);
 }
 
+function createCacheNewIframe() {
+    $("body").append("<iframe id='image_cache_iframe' style='display:none;'></iframe>");
+}
+
 function loadImages(start, size) {
     $.ajax({
         url: "api/home/loadPictures.crab?start=" + start + "&size=" + size,
         dataType: "json",
         success: function (data) {
-            createCacheNewIframe();
             imageCacheSize = data.length;
             for (var i = 0; i < data.length; i++) {
                 createImageDiv(data[i]);
@@ -44,10 +48,6 @@ function loadImages(start, size) {
 
         }
     });
-
-    function createCacheNewIframe() {
-        $("body").append("<iframe id='image_cache_iframe' style='display:none;'></iframe>");
-    }
 
     function createImageDiv(data) {
         //window.sc = "<img src=" + data.sourceUrl + "?" + Math.random() + ">";
@@ -66,7 +66,7 @@ function loadImages(start, size) {
             $("#image_ul_" + getShortestList()).append(copy);
             imageCacheSize--;
             if (imageCacheSize == 0) {
-                $("#image_cache_iframe").remove();
+                // $("#image_cache_iframe").remove();
             }
 
         }
