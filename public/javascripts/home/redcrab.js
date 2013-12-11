@@ -29,9 +29,9 @@ function initBaseContent() {
         .css("margin", "0px " + imageDivMargin).css("padding", 0);
 }
 
-function loadImages() {
+function loadImages(start, size) {
     $.ajax({
-        url: "api/home/loadPictures.crab",
+        url: "api/home/loadPictures.crab?start=" + start + "&size=" + size,
         dataType: "json",
         success: function (data) {
             createCacheNewIframe();

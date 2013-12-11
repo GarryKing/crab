@@ -6,9 +6,9 @@ var MAX_SIZE = 40;
 exports.loadPictures = function (req, res) {
     var start = req.query.start;
     var size = req.query.size;
-    if (start === undefined || start <= 0)
+    if (start === undefined || start=="undefined" ||  start <= 0)
         start = 0;
-    if (size === undefined || size <= 0 || size > MAX_SIZE)
+    if (size === undefined || size=="undefined" || size <= 0 || size > MAX_SIZE)
         size = MAX_SIZE;
     PicManager.loadAllPictures(start, size, function (rs) {
         var result = "";
