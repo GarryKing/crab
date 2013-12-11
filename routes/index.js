@@ -21,6 +21,13 @@ var RegManager = require('../models/manager/RegManager');
 var home = require('./home');
 var register = require('./register');
 var log = require('./log');
+
+/**
+ * ===================================
+ *  api dependencies
+ * ===================================
+ */
+var pictureLoader = require('./api/home/PictureLoader');
 /*exports.index = function (req, res) {
  logger.error("aaaaa1111");
  throw new Error("hahaha,成功了！");
@@ -85,7 +92,6 @@ var log = require('./log');
 
 module.exports = function (app) {
     app.get('/', home.index);
-    app.get('/api/home/loadPictures.crab', home.loadPictures);
     app.get('/u/:user', home.user);
     app.post('/post', home.post);
 
@@ -102,6 +108,10 @@ module.exports = function (app) {
 
     app.get('/logout', checkLogin);
     app.get('/logout', log.logout);
+
+
+    //api mapping
+    app.get('/api/home/loadPictures.crab', pictureLoader.loadPictures);
 
     return app.router;
 };
