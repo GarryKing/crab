@@ -46,3 +46,14 @@ body {
     width: 214px;
     margin: 0 auto;
 }
+
+.loading {
+    /*display: none;*/
+    background: #f2f0f1;
+    padding: 15px 0;
+    text-align: center;
+    font-weight: 700;
+    border: solid rgba(34,25,25,.14);
+    border-width: 1px 0 0 0;
+    color: #888;
+}
