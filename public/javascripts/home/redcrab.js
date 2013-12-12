@@ -2,7 +2,7 @@ $(function () {
     initGlobalParameter();
     initBaseContent();
     createCacheNewIframe();
-    loadImages(1, 20);
+    loadImages(1, 40);
     $(window).resize(function () {
         reSortImages();
     })
@@ -61,7 +61,8 @@ function loadImages(start, size) {
         var img = frame.contentDocument.getElementsByClassName("image_" + data.picId)[0].getElementsByTagName("img")[0];
         $(img).width(imageDivWidth - 2 * imageDivPadding);
         img.onload = function () {
-            $(img).parent().css("height", $(img).height());
+            var parrentH = $(img).height() >= 1000 ? 1000 : $(img).height();
+            $(img).parent().css("height", parrentH).css("overflow","hidden");
             var copy = $(img).parent().parent().parent().html();
             $("#image_ul_" + getShortestList()).append(copy);
             imageCacheSize--;

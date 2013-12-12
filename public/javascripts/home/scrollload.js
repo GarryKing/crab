@@ -4,7 +4,7 @@
 var totalheight = 0;
 var toTop = 0;
 var curr = 0;
-var pageSize = 20;
+var pageSize = 40;
 function loadData() {
     toTop = parseFloat($(window).scrollTop());
     totalheight = parseFloat($(window).height()) + toTop;
