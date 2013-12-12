@@ -5,11 +5,13 @@ var totalheight = 0;
 var toTop = 0;
 var curr = 0;
 var pageSize = 40;
+var clientH = 0;
 function loadData() {
-    toTop = parseFloat($(window).scrollTop());
-    totalheight = parseFloat($(window).height()) + toTop;
-    console.log("winH=" + $(document).height() * 0.8 + " , toTop=" + toTop);
-    if ($(document).height() * 0.75 <= toTop) {
+    toTop = parseFloat(document.body.scrollTop);
+    totalheight = parseFloat(document.body.scrollHeight);
+    clientH = parseFloat(document.body.clientHeight);
+    console.log("winH=" + totalheight  + " , toTop=" + toTop);
+    if (totalheight - clientH <= toTop) {
         loadImages(curr, pageSize);
         curr = curr + pageSize;
     }
