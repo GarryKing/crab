@@ -50,10 +50,8 @@ function loadImages(start, size) {
     });
 
     function createImageDiv(data) {
-        //window.sc = "<img src=" + data.sourceUrl + "?" + Math.random() + ">";
-        window.sc = "<img src=" + data.sourceUrl + ">";
-        //window.sc = "<img src='../../img/home/logo-bt1.PNG' xSrc=" + data.sourceUrl + ">";
-        var content = "<div><li><div class='image_wrapper image_" + data.picId + "' style='display:;'></div></li></div>";
+        window.sc = "<img src=" + data.sourceUrl + "?" + Math.random() + ">";
+        var content = "<div><li><div class='image_wrapper'><div class='image_" + data.picId + "'></div></div></li></div>";
         var frame = document.getElementById("image_cache_iframe");
         var frameBody = $(frame).contents().find("body");
         frameBody.append(content);
@@ -63,7 +61,7 @@ function loadImages(start, size) {
         img.onload = function () {
             var parrentH = $(img).height() >= 1000 ? 1000 : $(img).height();
             $(img).parent().css("height", parrentH).css("overflow","hidden");
-            var copy = $(img).parent().parent().parent().html();
+            var copy = $(img).parent().parent().parent().parent().html();
             $("#image_ul_" + getShortestList()).append(copy);
             imageCacheSize--;
             if (imageCacheSize == 0) {
