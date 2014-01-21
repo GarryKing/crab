@@ -6,6 +6,7 @@ $(function () {
     $(window).resize(function () {
         reSortImages();
     })
+
 });
 
 function initGlobalParameter() {
@@ -64,6 +65,7 @@ function loadImages(start, size) {
             var copy = $(img).parent().parent().parent().parent().html();
             $("#image_ul_" + getShortestList()).append(copy);
             imageCacheSize--;
+            imgZoom($(copy).find("img"));
             if (imageCacheSize == 0) {
                 // $("#image_cache_iframe").remove();
             }
@@ -88,4 +90,19 @@ function getShortestList() {
 function reSortImages() {
     initGlobalParameter();
     //alert(1);
+}
+
+function imgZoom(image){
+
+    $(image).on("click",function(){
+        alert( $(this).html() );
+        var big = "<img class='bigImage' src='"+ image.attr("src") +"' />";
+        $("#content").append(big);
+    });
+
+    /*$(".image_wrapper").on("click",function(){
+        alert( $(this).html() );
+        var big = "<img class='bigImage' src='"+ $(this).find("img").attr("src") +"' />";
+        $("#content").append(big);
+    });*/
 }

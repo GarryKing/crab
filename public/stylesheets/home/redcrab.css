@@ -57,3 +57,10 @@ body {
     border-width: 1px 0 0 0;
     color: #888;
 }
+
+
+
+
+
+.bigImage {display: block; margin: 0 auto; border: 10px solid #ffffff;}
+.image_wrapper {cursor: pointer;}

@@ -38,7 +38,7 @@ logger.setLevel('INFO');
  * ===================================
  */
 var app = express();
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 8011);
 app.set('views', __dirname + '/views'); //视图文件的目录，存放模板文件
 app.set('view engine', 'ejs');          //视图模板引擎
 app.use(express.bodyParser());          //解析客户端请求，通常是通过 POST 发送的内容
