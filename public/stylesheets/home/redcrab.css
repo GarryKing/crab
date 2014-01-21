@@ -59,8 +59,13 @@ body {
 }
 
 
+#top img {display: inline-block; margin-left: 70px;}
+#top h1 {display: inline-block; color: #fff; vertical-align: bottom;}
+.avatarCon {width: 100px; height: 100px; margin: 0 auto; padding: 10px; background-color: #fff;}
+.avatarCon img {width: 100px; height: 100px;}
+.userName {width: 200px; margin: 0 auto; text-align: center; line-height: 40px;}
 
-
-
-.bigImage {display: block; margin: 0 auto; border: 10px solid #ffffff;}
+/**-- 图片放大 --**/
+.bigImage {display: block; margin: 0 auto; border: 10px solid #ffffff; position: fixed; z-index: 200;}
 .image_wrapper {cursor: pointer;}
+.overlay {position: fixed; left: 0; top: 0; background-color: rgba(30,30,30,0.6); z-index: 100;}
