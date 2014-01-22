@@ -67,6 +67,38 @@ if ('development' == app.get('env')) {
  *  启动服务器
  * ===================================
  */
-http.createServer(app).listen(app.get('port'), function () {
+var server = http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
+});
+
+/**
+ * ===================================
+ *  socket
+ * ===================================
+ */
+var io = require('socket.io').listen(server);
+var ips = [];
+io.sockets.on('connection', function(socket) {
+    socket.on('new user', function(data){
+        var ip = socket.handshake.address.address;
+        if(ips.indexOf(ip) != -1){   //这个IP已经连上了
+            socket.broadcast.emit('number', {connectNum: ips.length});
+            socket.emit('number', {connectNum: ips.length});
+        }else{                       //这个IP还没有连上
+            ips.push(ip);
+            socket.broadcast.emit('number', {connectNum: ips.length});
+            socket.emit('number', {connectNum: ips.length});
+            console.log("++ "+ ips.length);
+        }
+    });
+    socket.on('disconnect', function(){
+        var ip = socket.handshake.address.address;
+        if(ips.indexOf(ip) > -1){     //这个IP已经连上了
+            ips.splice(ips.indexOf(ip), 1);
+            socket.broadcast.emit('number', {connectNum: ips.length});
+            console.log("++ "+ ips.length);
+        }else{
+            socket.broadcast.emit('number', {connectNum: ips.length});
+        }
+    })
 });

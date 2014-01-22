@@ -61,14 +61,11 @@ function loadImages(start, size) {
         $(img).width(imageDivWidth - 2 * imageDivPadding);
         img.onload = function () {
             var parrentH = $(img).height() >= 1000 ? 1000 : $(img).height();
-            $(img).parent().css("height", parrentH).css("overflow","hidden");
+            $(img).parent().css("height", parrentH).css("overflow", "hidden");
             var copy = $(img).parent().parent().parent().parent().html();
             $("#image_ul_" + getShortestList()).append(copy);
             imageCacheSize--;
-            imgZoom($(copy).find("img"));
-            if (imageCacheSize == 0) {
-                // $("#image_cache_iframe").remove();
-            }
+            imgZoom($(".image_" + data.picId + " img"));
 
         }
     }
@@ -92,17 +89,33 @@ function reSortImages() {
     //alert(1);
 }
 
-function imgZoom(image){
+function imgZoom(image) {
+    $(image).on("click", function () {
+        if($(".bigImage")){
+            $(".bigImage").remove();
+        }
 
-    $(image).on("click",function(){
-        alert( $(this).html() );
-        var big = "<img class='bigImage' src='"+ image.attr("src") +"' />";
+        var big = "<img class='bigImage' src='" + image.attr("src") + "' />";
         $("#content").append(big);
+
+        var bigImage = $(".bigImage");
+        //var bigImageWidth = bigImage.width() > clientVisibleWidth ?  (clientVisibleWidth-20) : bigImage.width();
+        bigImage.css("max-width", clientVisibleWidth-80+"px");
+        bigImage.css("max-height", clientVisibleHeight-60+"px");
+        bigImage.css("left", (clientVisibleWidth-bigImage.width())/2+"px");
+        bigImage.css("top", (clientVisibleHeight-bigImage.height())/2+"px");
+//        var bigImageWidth = bigImage.width() > clientVisibleWidth ?  (clientVisibleWidth-20) : bigImage.width();
+//        bigImage.css("width", bigImageWidth+"px");
+//        bigImage.css("left", (clientVisibleWidth-bigImageWidth)/2+"px");
+
+        var overlay = $(".overlay");
+        overlay.css("width", clientVisibleWidth);
+        overlay.css("height", clientVisibleHeight);
+        overlay.show();
+        overlay.on("click", function(){
+            bigImage.remove();
+            overlay.hide();
+        })
+
     });
-
-    /*$(".image_wrapper").on("click",function(){
-        alert( $(this).html() );
-        var big = "<img class='bigImage' src='"+ $(this).find("img").attr("src") +"' />";
-        $("#content").append(big);
-    });*/
 }
