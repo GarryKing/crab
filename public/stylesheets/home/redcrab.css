@@ -68,4 +68,9 @@ body {
 /**-- 图片放大 --**/
 .bigImage {display: block; margin: 0 auto; border: 10px solid #ffffff; position: fixed; z-index: 200;}
 .image_wrapper {cursor: pointer;}
-.overlay {position: fixed; left: 0; top: 0; background-color: rgba(30,30,30,0.6); z-index: 100;}
+.overlay {position: fixed; left: 0; top: 0; background-color: rgba(30,30,30,0.6); z-index: 100; display: none;}
+.overlay-btn {background: url("../../img/home/next.png") no-repeat; display: block; width: 60px; height: 140px; position: absolute; top: 50%; cursor: pointer;}
+.toPrevious {background-position: -165px -10px; left: 20px;}
+.toPrevious:hover {background-position: -18px -10px;}
+.toNext {background-position: -240px -10px; right: 40px;}
+.toNext:hover {background-position: -92px -10px;}

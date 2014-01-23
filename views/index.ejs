@@ -2,9 +2,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
     <title>红螃蟹</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/home/redcrab.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/home/base.css"/>
     <link rel="stylesheet" type="text/css" href="/stylesheets/home/login.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home/redcrab.css">
     <script type="text/javascript" src="/javascripts/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/javascripts/home/redcrab.js"></script>
     <script type="text/javascript" src="/javascripts/home/scrollload.js"></script>
@@ -28,7 +28,10 @@
     <span>正在加载...</span>
 </div>
 
-<div class="overlay"></div>
+<div class="overlay">
+    <a class="overlay-btn toPrevious J_toPrevious"></a>
+    <a class="overlay-btn toNext J_toNext"></a>
+</div>
 
 <div id="login-body" class="clearfix" hidden="true">
     <div class="login-wrap">
@@ -50,7 +53,7 @@
 </div>
 
 <script>
-    var socket = io.connect('http://192.168.1.102:8011');
+    var socket = io.connect('http://10.1.18.34:8011');//('http://192.168.1.102:8011');
     socket.emit('new user', { text: 'hi'});
     socket.on('number', function(data) {
         $('.connectionNum').text(data.connectNum);

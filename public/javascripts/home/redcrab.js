@@ -6,7 +6,7 @@ $(function () {
     $(window).resize(function () {
         reSortImages();
     })
-
+    imgZoomHandler();
 });
 
 function initGlobalParameter() {
@@ -99,14 +99,10 @@ function imgZoom(image) {
         $("#content").append(big);
 
         var bigImage = $(".bigImage");
-        //var bigImageWidth = bigImage.width() > clientVisibleWidth ?  (clientVisibleWidth-20) : bigImage.width();
         bigImage.css("max-width", clientVisibleWidth-80+"px");
         bigImage.css("max-height", clientVisibleHeight-60+"px");
         bigImage.css("left", (clientVisibleWidth-bigImage.width())/2+"px");
         bigImage.css("top", (clientVisibleHeight-bigImage.height())/2+"px");
-//        var bigImageWidth = bigImage.width() > clientVisibleWidth ?  (clientVisibleWidth-20) : bigImage.width();
-//        bigImage.css("width", bigImageWidth+"px");
-//        bigImage.css("left", (clientVisibleWidth-bigImageWidth)/2+"px");
 
         var overlay = $(".overlay");
         overlay.css("width", clientVisibleWidth);
@@ -118,4 +114,13 @@ function imgZoom(image) {
         })
 
     });
+}
+
+function imgZoomHandler(){
+    $(".J_toNext").on("click", function(){
+
+    })
+
+
+
 }
